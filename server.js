@@ -10,6 +10,7 @@ const session = require('express-session')
 
 //* import env variables
 const PORT = process.env.PORT || 5000
+const WS_PORT = process.env.W_PORT || 1337
 
 //* Server setup
 const app = express()
@@ -19,7 +20,7 @@ server.listen(PORT, () => {
   console.log(`the server is listening on port ${PORT}`)
 })
 
-const wss = new WebSocket.Server({ port: 1337 })
+const wss = new WebSocket.Server({ port: WS_PORT })
 
 //* Socket setup
 require('./config/socket')(server, wss, {
