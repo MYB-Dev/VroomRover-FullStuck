@@ -15,6 +15,7 @@ const socketIO = (server, wss, option) => {
     })
 
     wss.on('connection', (ws) => {
+      console.log('connected!')
       ws.on('message', (data) => {
         socket.emit('stream', data)
       })
