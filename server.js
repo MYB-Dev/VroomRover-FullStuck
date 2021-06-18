@@ -10,7 +10,7 @@ const session = require('express-session')
 
 //* import env variables
 const PORT = process.env.PORT || 5000
-const WS_PORT = process.env.W_PORT || 1337
+const WS_PORT = process.env.WS_PORT || 1337
 
 //* Server setup
 const app = express()
