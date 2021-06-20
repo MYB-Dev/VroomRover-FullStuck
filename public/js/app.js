@@ -7,8 +7,8 @@ const right = document.getElementById('right')
 const flashlight = document.getElementById('flashlight')
 const speed = document.getElementById('speed')
 
-const SOCKET_URL = 'ws://vroomrover.herokuapp.com/'
-const WS_URL = 'ws://vroomrover.herokuapp.com/ws'
+const SOCKET_URL = 'wss://vroomrover.herokuapp.com/'
+const WS_URL = 'wss://vroomrover.herokuapp.com/ws'
 
 const ws = new WebSocket(WS_URL)
 
