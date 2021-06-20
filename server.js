@@ -7,26 +7,41 @@ const cors = require('cors')
 const helmet = require('helmet')
 const flash = require('connect-flash')
 const session = require('express-session')
+const url = require('url')
+
+//* env setup
+require('dotenv').config()
 
 //* import env variables
 const PORT = process.env.PORT || 5000
-const WS_PORT = process.env.WS_PORT || 1337
 
 //* Server setup
 const app = express()
 const server = require('http').createServer(app)
 
-server.listen(PORT, () => {
-  console.log(`the server is listening on port ${PORT}`)
-})
+//* WebSockets setup
+const wss = new WebSocket.Server({ noServer: true })
 
-const wss = new WebSocket.Server({ port: WS_PORT })
-
-//* Socket setup
+//* Socket.io setup
 require('./config/socket')(server, wss, {
+  'destroy upgrade': false,
   cors: {
     origin: '*',
   },
+})
+
+server.on('upgrade', (request, socket, head) => {
+  const pathname = url.parse(request.url).pathname
+
+  if (pathname === '/ws') {
+    wss.handleUpgrade(request, socket, head, (ws) => {
+      wss.emit('connection', ws)
+    })
+  }
+})
+
+server.listen(PORT, () => {
+  console.log(`the server is listening on port ${PORT}`)
 })
 
 //* Passport Config
