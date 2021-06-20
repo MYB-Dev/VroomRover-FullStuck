@@ -13,8 +13,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <span class="navbar-text me-auto"> Welcome <%= user.username %> </span>
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -41,4 +40,25 @@
 <div class="d-flex justify-content-between">
   <img class="figure-img img-fluid dashboard-img" src="img/my_car.svg" />
 </div>
-<hr />
+<div class="row">
+  <div class="col d-grid gap-2">
+    <button class="btn btn-primary" id="forward">forward</button>
+    <div class="row">
+      <div class="col d-grid gap-2">
+        <button class="btn btn-primary" onclick="turnLeft()">left</button>
+      </div>
+      <div class="col d-grid gap-2">
+        <button class="btn btn-primary" onclick="turnRight()">right</button>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="moveBackward()">backward</button>
+
+    <button class="btn btn-light" onclick="toggleFlashlight()">
+      flashlight
+    </button>
+    <input type="range" min="1" max="10" value="1" class="" id="speed" />
+  </div>
+  <div class="col">
+    <h1 id="mpu"></h1>
+  </div>
+</div>
