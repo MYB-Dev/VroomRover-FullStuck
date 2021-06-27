@@ -42,23 +42,43 @@
 </div>
 <div class="">
   <div class="d-grid gap-2">
-    <button class="btn btn-primary" id="forward">forward</button>
+    <button class="btn btn-primary" id="forward">
+      <i class="fas fa-arrow-up"></i> Forward
+    </button>
     <div class="row">
       <div class="col d-grid gap-2">
-        <button class="btn btn-primary" onclick="turnLeft()">left</button>
+        <button class="btn btn-primary" onclick="turnLeft()">
+          <i class="fas fa-arrow-left"></i> Left
+        </button>
       </div>
       <div class="col d-grid gap-2">
-        <button class="btn btn-primary" onclick="turnRight()">right</button>
+        <button class="btn btn-primary" onclick="turnRight()">
+          Right <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </div>
-    <button class="btn btn-primary" onclick="moveBackward()">backward</button>
+    <button class="btn btn-primary" onclick="moveBackward()">
+      <i class="fas fa-arrow-down"></i> Backward
+    </button>
 
     <button class="btn btn-light" onclick="toggleFlashlight()">
-      flashlight
+      <i class="far fa-lightbulb"></i> Flashlight
     </button>
-    <input type="range" min="1" max="10" value="1" class="" id="speed" />
+    <center>
+      <label for="speed" class="form-label"
+        ><i class="fas fa-tachometer-alt"></i> Speed</label
+      >
+    </center>
+    <input
+      type="range"
+      min="1"
+      max="10"
+      value="1"
+      class="form-range"
+      id="speed"
+    />
   </div>
-  <!-- <div class="col">
+  <div class="col">
     <h1 id="mpu"></h1>
-  </div> -->
+  </div>
 </div>

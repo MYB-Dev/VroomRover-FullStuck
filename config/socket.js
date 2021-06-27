@@ -4,10 +4,10 @@ const socketIO = (server, wss, option) => {
   io.on('connection', (socket) => {
     console.log(`made socket connection with id: ${socket.id}`)
 
-    socket.on('mpu_measure', (raw) => {
+    socket.on('detectObj', (raw) => {
       const data = JSON.stringify(raw)
       console.log(data)
-      socket.broadcast.emit('rover_measure', data)
+      socket.broadcast.emit('sensor', data)
     })
     socket.on('emit_command', (raw) => {
       socket.broadcast.emit('command_rover', raw)
