@@ -69,7 +69,7 @@ socket.on('stream', (data) => {
   img.src = urlObject
 })
 
-socket.on('Sensor', (data) => {
+socket.on('sensor', (data) => {
   mpu.innerHTML = data
 })
 // let detector
