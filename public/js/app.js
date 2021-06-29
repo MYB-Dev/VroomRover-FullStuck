@@ -8,9 +8,6 @@ const flashlight = document.getElementById('flashlight')
 const speed = document.getElementById('speed')
 
 const SOCKET_URL = 'wss://vroomrover.herokuapp.com/'
-const WS_URL = 'wss://vroomrover.herokuapp.com/ws'
-
-const ws = new WebSocket(WS_URL)
 
 const socket = io.connect(SOCKET_URL)
 let urlObject
@@ -64,9 +61,6 @@ const beep = () => {
   snd.play()
 }
 
-socket.on('rover_measure', (data) => {
-  mpu.innerHTML = data
-})
 socket.on('stream', (data) => {
   const arrayBuffer = data
   if (urlObject) {
