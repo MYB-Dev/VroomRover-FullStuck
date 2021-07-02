@@ -60,22 +60,28 @@ const beep = () => {
   )
   snd.play()
 }
-
-socket.on('stream', (data) => {
-  const arrayBuffer = data
-  if (urlObject) {
-    URL.revokeObjectURL(urlObject)
-  }
-  urlObject = URL.createObjectURL(new Blob([arrayBuffer]))
-  img.src = urlObject
-})
-
 socket.on('sensor', (data) => {
   mpu.innerHTML = `The distance is ${data.distance}`
   while (data.distance < 10) {
     beep()
   }
 })
+
+const ws = new WebSocket(`${SOCKET_URL}ws`)
+let urlObject
+ws.onopen = () => {
+  console.log(`Connected to ${WS_URL_STREAM}`)
+}
+ws.onmessage = (data) => {
+  console.log(data)
+  const arrayBuffer = data.data
+  if (urlObject) {
+    URL.revokeObjectURL(urlObject)
+  }
+  urlObject = URL.createObjectURL(new Blob([arrayBuffer]))
+  img.src = urlObject
+}
+
 // let detector
 
 // function preload() {
