@@ -68,7 +68,6 @@ socket.on('sensor', (data) => {
 })
 
 const ws = new WebSocket(`${SOCKET_URL}ws`)
-let urlObject
 ws.onopen = () => {
   console.log(`Connected to ${WS_URL_STREAM}`)
 }
