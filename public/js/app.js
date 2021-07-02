@@ -69,7 +69,7 @@ socket.on('sensor', (data) => {
 
 const ws = new WebSocket(`${SOCKET_URL}ws`)
 ws.onopen = () => {
-  console.log(`Connected to ${WS_URL_STREAM}`)
+  console.log(`Connected to ${SOCKET_URL}ws`)
 }
 ws.onmessage = (data) => {
   console.log(data)
