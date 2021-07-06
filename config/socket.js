@@ -1,5 +1,6 @@
 const socketIO = (server, wss, option) => {
   const io = require('socket.io')(server, option)
+  const WebSocket = require('ws')
 
   io.on('connection', (socket) => {
     console.log(`made socket connection with id: ${socket.id}`)
