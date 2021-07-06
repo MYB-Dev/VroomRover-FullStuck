@@ -26,9 +26,9 @@ socket.on('sensor', (data) => {
   }
 })
 
-const ws2 = new WebSocket(SOCKET_URL)
+const ws2 = new WebSocket(`${SOCKET_URL}ws`)
 ws2.onopen = () => {
-  console.log(`Connected to ${SOCKET_URL}`)
+  console.log(`Connected to ${SOCKET_URL}ws`)
 }
 ws2.onmessage = (message) => {
   console.log(message)
