@@ -40,7 +40,7 @@ server.on('upgrade', (request, socket, head) => {
   }
 })
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`the server is listening on port ${PORT}`)
 })
 
