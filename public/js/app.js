@@ -19,7 +19,8 @@ const beep = () => {
   const snd = new Audio(AudioBeep)
   snd.play()
 }
-socket.on('sensor', (data) => {
+socket.on('sensor', (raw) => {
+  const data = JSON.parse(raw)
   mpu.innerHTML = `The distance is ${data.distance}`
   while (data.distance < 10) {
     beep()

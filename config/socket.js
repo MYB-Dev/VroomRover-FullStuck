@@ -6,8 +6,8 @@ const socketIO = (server, wss, option) => {
     console.log(`made socket connection with id: ${socket.id}`)
 
     socket.on('detectObj', async (raw) => {
-      const data = await JSON.parse(raw)
-      socket.broadcast.emit('sensor', data)
+      console.log(raw)
+      socket.broadcast.emit('sensor', raw)
     })
     socket.on('emit_command', (raw) => {
       socket.broadcast.emit('command_rover', raw)
