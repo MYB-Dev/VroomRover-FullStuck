@@ -31,7 +31,6 @@ ws2.onopen = () => {
   console.log(`Connected to ${SOCKET_URL}ws`)
 }
 ws2.onmessage = (message) => {
-  console.log(message)
   const arrayBuffer = message.data
   if (urlObject) {
     URL.revokeObjectURL(urlObject)
