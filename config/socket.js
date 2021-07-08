@@ -17,7 +17,7 @@ const socketIO = (server, wss, option) => {
       ws.on('message', (data) => {
         wss.clients.forEach((client) => {
           if (client.readyState === WebSocket.OPEN) {
-            socket.broadcast.emit('stream', data)
+            ws.send(data)
           }
         })
       })
