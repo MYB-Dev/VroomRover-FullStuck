@@ -26,18 +26,14 @@ socket.on('sensor', (data) => {
   }
 })
 
-const ws2 = new WebSocket(`${SOCKET_URL}ws`)
-ws2.onopen = () => {
-  console.log(`Connected to ${SOCKET_URL}ws`)
-}
-ws2.onmessage = (message) => {
-  const arrayBuffer = message.data
+socket.on('stream', (data) => {
+  const arrayBuffer = data
   if (urlObject) {
     URL.revokeObjectURL(urlObject)
   }
   urlObject = URL.createObjectURL(new Blob([arrayBuffer]))
   img.src = urlObject
-}
+})
 
 document.onkeydown = (e) => {
   const keyCode = e.keyCode
