@@ -20,24 +20,13 @@ const app = express()
 const server = require('http').createServer(app)
 
 //* WebSockets setup
-const wss = new WebSocket.Server({ noServer: true })
+const wss = new WebSocket.Server({ port: 8080 })
 
 //* Socket.io setup
 require('./config/socket')(server, wss, {
-  'destroy upgrade': false,
   cors: {
     origin: '*',
   },
-})
-
-server.on('upgrade', (request, socket, head) => {
-  const pathname = url.parse(request.url).pathname
-
-  if (pathname === '/ws') {
-    wss.handleUpgrade(request, socket, head, (ws) => {
-      wss.emit('connection', ws)
-    })
-  }
 })
 
 server.listen(PORT, '0.0.0.0', () => {
