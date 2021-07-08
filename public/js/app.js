@@ -27,6 +27,7 @@ socket.on('sensor', (data) => {
 })
 
 socket.on('stream', (data) => {
+  console.log(data)
   const arrayBuffer = data
   if (urlObject) {
     URL.revokeObjectURL(urlObject)
